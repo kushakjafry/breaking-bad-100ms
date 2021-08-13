@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Row } from "reactstrap";
 import { historyUrlGenerator } from "../../Helper/api-helper";
 
-const PaginationActorList = (props) => {
+const PaginationCharacterList = (props) => {
   const history = useHistory();
   return (
     <>
@@ -11,7 +11,6 @@ const PaginationActorList = (props) => {
           className="m-2"
           disabled={!props.hasPrev}
           onClick={() => {
-            // props.fetchCastData((parseInt(props.page) - 1) * 10 - 10, 11);
             history.push(
               historyUrlGenerator(
                 history.location.pathname,
@@ -29,7 +28,6 @@ const PaginationActorList = (props) => {
         </Button>
         <Button
           onClick={() => {
-            // props.fetchCastData(parseInt(props.page) * 10, 11);
             history.push(
               historyUrlGenerator(
                 history.location.pathname,
@@ -49,4 +47,4 @@ const PaginationActorList = (props) => {
   );
 };
 
-export default PaginationActorList;
+export default PaginationCharacterList;

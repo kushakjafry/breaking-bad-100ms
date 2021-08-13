@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Input, Row, Spinner } from "reactstrap";
-import ActorList from "../Components/Cast/ActorList";
+import { Col, Container, Input, Row } from "reactstrap";
+import CharacterList from "../Components/Character/CharacterList";
 import {
   getAllCharactersUrl,
   historyUrlGenerator,
   stringParser,
 } from "../Helper/api-helper";
-import "../styles/components/cast/cast.css";
+import "../styles/components/Character/character.css";
 import { toast } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useHistory, useLocation } from "react-router-dom";
-import PaginationActorList from "../Components/Cast/PaginationActorList";
+import PaginationCharacterList from "../Components/Character/PaginationCharacterList";
+import axios from "axios";
 
-const Cast = (props) => {
-  const [cast, setCast] = useState([]);
+const Characters = (props) => {
+  const [characters, setCharacter] = useState([]);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
   //page query
   const page = queryParams.has("page") ? parseInt(queryParams.get("page")) : 1;
-  const hasNextPage = cast.length === 11;
+  const hasNextPage = characters.length === 11;
   const hasPrev = page === 1 ? false : true;
   const offset = (page - 1) * 10;
 
@@ -41,7 +42,7 @@ const Cast = (props) => {
   const [categoryInputTouched, setCategoryInputTouched] = useState(false);
 
   useEffect(() => {
-    fetchCastData(offset, 11, category, search);
+    fetchCharacterData(offset, 11, category, search);
   }, [offset, search, category]);
 
   useEffect(() => {
@@ -81,17 +82,17 @@ const Cast = (props) => {
     }
   }, [categoryInput, categoryInputTouched]);
 
-  async function fetchCastData(offset, limit, category, name) {
+  async function fetchCharacterData(offset, limit, category, name) {
     try {
       setError(null);
       setIsLoading(true);
-      const response = await fetch(
+      const response = await axios.get(
         getAllCharactersUrl(offset, limit, category, name)
       );
-      const data = await response.json();
-      setCast(data);
+      const data = await response.data;
+      setCharacter(data);
     } catch (err) {
-      toast.error("Failed to fetch Cast", {
+      toast.error("Failed to fetch Characters", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -110,7 +111,7 @@ const Cast = (props) => {
       <Container className="pt-5" style={{ minHeight: "100vh" }}>
         <Row style={{ alignItems: "center" }}>
           <Col xs={12} md={6} className="h1 text-center text-md-start">
-            Cast
+            Characters
           </Col>
           <Col xs={12} md={3} className="">
             <Input
@@ -157,13 +158,13 @@ const Cast = (props) => {
             </div>
           </Row>
         )}
-        {!isLoading && !error && cast.length === 0 && (
+        {!isLoading && !error && characters.length === 0 && (
           <div className="text-center p-5">Ohh! snap no data</div>
         )}
         {!isLoading && !error && (
           <>
-            <ActorList cast={cast} />
-            <PaginationActorList
+            <CharacterList characters={characters} />
+            <PaginationCharacterList
               page={page}
               hasNext={hasNextPage}
               hasPrev={hasPrev}
@@ -177,4 +178,4 @@ const Cast = (props) => {
   );
 };
 
-export default Cast;
+export default Characters;

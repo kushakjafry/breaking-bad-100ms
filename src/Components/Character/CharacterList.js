@@ -1,27 +1,27 @@
 import { Col, Row } from "reactstrap";
-import ActorCard from "./ActorCard";
+import CharacterCard from "./CharacterCard";
 
-const ActorList = (props) => {
-  const actors = props.cast.slice(
+const CharacterList = (props) => {
+  const characters = props.characters.slice(
     0,
-    props.cast.length > 10 ? 10 : props.cast.length
+    props.characters.length > 10 ? 10 : props.characters.length
   );
   return (
     <Row>
-      {actors.map((actor) => {
+      {characters.map((character) => {
         return (
           <Col
             xs={12}
             sm={6}
             lg={3}
-            key={actor.char_id}
+            key={character.char_id}
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <ActorCard actor={actor} />
+            <CharacterCard character={character} />
           </Col>
         );
       })}
@@ -29,4 +29,4 @@ const ActorList = (props) => {
   );
 };
 
-export default ActorList;
+export default CharacterList;

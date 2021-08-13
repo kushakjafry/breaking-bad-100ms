@@ -22,14 +22,19 @@ const HomePage = (props) => {
           </div>
           <div className="home_movie_buttons">
             <Link
-              to="/actors"
+              to="/characters"
               className="cast_and_crew me-4 p-3 fw-bolder border border-white"
             >
-              Cast & Crew
+              Characters
             </Link>
-            <Link className="watch_trailer p-3 border border-white">
+            <a
+              href="https://www.youtube.com/watch?v=HhesaQXLuRY"
+              target="_blank"
+              rel="noreferrer"
+              className="watch_trailer p-3 border border-white"
+            >
               Watch Trailer
-            </Link>
+            </a>
           </div>
         </div>
       </Container>

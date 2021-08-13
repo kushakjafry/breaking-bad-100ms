@@ -13,7 +13,7 @@ import {
   FlippingCardFront,
 } from "react-ui-cards";
 import { Link } from "react-router-dom";
-const ActorCard = (props) => {
+const CharacterCard = (props) => {
   return (
     <FlippingCard>
       <FlippingCardBack>
@@ -33,26 +33,26 @@ const ActorCard = (props) => {
             }}
           >
             <CardBody>
-              <CardTitle tag="h5">{props.actor.name}</CardTitle>
+              <CardTitle tag="h5">{props.character.name}</CardTitle>
               <hr />
               <CardText>
                 <small>
-                  <strong>Occupation:</strong> {props.actor.occupation}
+                  <strong>Occupation:</strong> {props.character.occupation}
                 </small>
               </CardText>
               <CardText>
                 <small>
-                  <strong>Date of Birth:</strong> {props.actor.birthday}
+                  <strong>Date of Birth:</strong> {props.character.birthday}
                 </small>
               </CardText>
               <CardText>
                 <small>
-                  <strong>Status:</strong> {props.actor.status}
+                  <strong>Status:</strong> {props.character.status}
                 </small>
               </CardText>
             </CardBody>
             <CardFooter className="text-center">
-              <Link to={"/actors/" + props.actor.char_id}>
+              <Link to={"/characters/" + props.character.char_id}>
                 <Button color="primary">Read more</Button>
               </Link>
             </CardFooter>
@@ -66,7 +66,7 @@ const ActorCard = (props) => {
             height: "100%",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundImage: `url(${props.actor.img})`,
+            backgroundImage: `url(${props.character.img})`,
           }}
         ></div>
       </FlippingCardFront>
@@ -74,4 +74,4 @@ const ActorCard = (props) => {
   );
 };
 
-export default ActorCard;
+export default CharacterCard;

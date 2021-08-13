@@ -1,7 +1,7 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import ActorDetail from "./Pages/ActorDetail";
-import Cast from "./Pages/Cast";
+import CharacterDetail from "./Pages/CharacterDetail";
+import Character from "./Pages/Character";
 import HomePage from "./Pages/HomePage";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,11 +15,11 @@ function App() {
         <Route path="/home" exact>
           <HomePage />
         </Route>
-        <Route path="/actors" exact>
-          <Cast />
+        <Route path="/characters" exact>
+          <Character />
         </Route>
-        <Route path="/actors/:actorId" exact>
-          <ActorDetail />
+        <Route path="/characters/:characterId">
+          <CharacterDetail />
         </Route>
       </Switch>
       <ToastContainer
