@@ -92,7 +92,11 @@ const Characters = (props) => {
       const data = await response.data;
       setCharacter(data);
     } catch (err) {
-      toast.error("Failed to fetch Characters", {
+      let msg = "Failed to fetch Characters";
+      if (err?.response?.status === 429) {
+        msg = "Todays API limit reached";
+      }
+      toast.error(msg, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,

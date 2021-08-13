@@ -38,7 +38,11 @@ const CharacterDetail = (props) => {
         });
         setIsLoading(false);
       } catch (err) {
-        toast.error("Failed to fetch Characters", {
+        let msg = "Failed to fetch Character";
+        if (err?.response?.status) {
+          msg = "Today's API Limit Reached";
+        }
+        toast.error(msg, {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -69,19 +73,6 @@ const CharacterDetail = (props) => {
       </div>
     );
   } else if (!isLoading && error) {
-    return (
-      <div className="character_section">
-        <Row
-          className="justify-content-center align-items-center"
-          style={{ minHeight: "100vh", margin: 0, padding: 0 }}
-        >
-          <div className="text-center">
-            Ohh! Snap there was a error! Kindly try after sometime
-          </div>
-        </Row>
-      </div>
-    );
-  } else if (!isLoading && !error && Object.keys(character).length === 0) {
     return (
       <div className="character_section">
         <Row
@@ -131,9 +122,11 @@ const CharacterDetail = (props) => {
                 </Col>
                 <Col xs={6} className="pt-3">
                   <ul className="p-0">
-                    {character.occupation.map((occupation) => {
+                    {character.occupation.map((occupation, index) => {
                       return (
-                        <li style={{ listStyle: "none" }}>{occupation}</li>
+                        <li key={index} style={{ listStyle: "none" }}>
+                          {occupation}
+                        </li>
                       );
                     })}
                   </ul>
@@ -157,7 +150,10 @@ const CharacterDetail = (props) => {
                   >
                     {character.qoutes.map((qoute) => {
                       return (
-                        <SwiperSlide className="d-flex justify-content-center align-items-center">
+                        <SwiperSlide
+                          key={qoute.quote_id}
+                          className="d-flex justify-content-center align-items-center"
+                        >
                           <div className="p-3 text-center">{qoute.quote}</div>
                         </SwiperSlide>
                       );
