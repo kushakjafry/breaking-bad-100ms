@@ -114,10 +114,10 @@ const Characters = (props) => {
     <div className="cast_section">
       <Container className="pt-5" style={{ minHeight: "100vh" }}>
         <Row style={{ alignItems: "center" }}>
-          <Col xs={12} md={6} className="h1 text-center text-md-start">
+          <Col xs={12} md={6} className="h1 text-center text-md-start mt-1">
             Characters
           </Col>
-          <Col xs={12} md={3} className="">
+          <Col xs={12} md={3} className="mt-1">
             <Input
               type="select"
               value={categoryInput}
@@ -131,11 +131,7 @@ const Characters = (props) => {
               <option value="Better Call Saul">Better Call Saul</option>
             </Input>
           </Col>
-          <Col
-            xs={12}
-            md={3}
-            className="d-md-flex d-none justify-content-md-end"
-          >
+          <Col xs={12} md={3} className="d-md-flex justify-content-md-end mt-1">
             <Input
               type="text"
               disabled={category}

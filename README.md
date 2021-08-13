@@ -1,3 +1,7 @@
+# BREAKING BAD API..
+
+React project that uses the [breaking bad api](https://breakingbadapi.com/documentation) to show, search and filter characters in the show.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
