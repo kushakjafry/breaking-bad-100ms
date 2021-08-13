@@ -5,8 +5,8 @@ React project that uses the [breaking bad api](https://breakingbadapi.com/docume
 ## Images
 
 ![Home](public/Images/project1.jpg "Home Page")
-![Characters](public/Images/project2.jpg "Characters Page")
-![Character](public/Images/project3.jpg "Single Character Page")
+![Characters](public/Images/Project2.jpg "Characters Page")
+![Character](public/Images/Project3.jpg "Single Character Page")
 
 # Getting Started with Create React App
 
