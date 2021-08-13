@@ -2,6 +2,12 @@
 
 React project that uses the [breaking bad api](https://breakingbadapi.com/documentation) to show, search and filter characters in the show.
 
+## Images
+
+![Home](public/Images/project1.jpg "Home Page")
+![Characters](public/Images/project2.jpg "Characters Page")
+![Character](public/Images/project3.jpg "Single Character Page")
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

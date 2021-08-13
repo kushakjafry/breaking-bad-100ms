@@ -21,6 +21,9 @@ function App() {
         <Route path="/characters/:characterId">
           <CharacterDetail />
         </Route>
+        <Route path="*">
+          <Redirect to="/home" />
+        </Route>
       </Switch>
       <ToastContainer
         position="top-right"
